@@ -1,9 +1,15 @@
 #include "MainComponent.h"
+using namespace juce;
 
 //==============================================================================
 MainComponent::MainComponent()
 {
-    setSize (1280, 800);
+    setSize(originalWidth, originalHeight);
+    constrainer.setFixedAspectRatio(static_cast<double>(originalWidth) / static_cast<double>(originalHeight));
+    constrainer.setSizeLimits(originalWidth / 4, originalHeight / 4,
+        originalWidth, originalHeight);
+   
+    
 }
 
 MainComponent::~MainComponent()
@@ -27,4 +33,7 @@ void MainComponent::resized()
     // This is called when the MainComponent is resized.
     // If you add any child components, this is where you should
     // update their positions.
+    const auto scaleFactor = static_cast<float> (getWidth()) / originalWidth;
+    setTransform(AffineTransform::scale(scaleFactor));
+    setBounds(0, 0, originalWidth, originalHeight);
 }
