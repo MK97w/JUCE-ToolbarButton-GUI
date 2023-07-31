@@ -4,7 +4,10 @@
               addUsingNamespaceToJuceHeader="0" displaySplashScreen="1" jucerFormatVersion="1">
   <MAINGROUP id="Fmbj9C" name="ToolBar_Button_GUI">
     <GROUP id="{69FF7A91-8DA4-B3ED-C95C-50DD47AA993F}" name="Resources">
+      <FILE id="r0TpRd" name="autumn.jpg" compile="0" resource="1" file="Resources/autumn.jpg"/>
+      <FILE id="TZQxE9" name="spring.jpg" compile="0" resource="1" file="Resources/spring.jpg"/>
       <FILE id="WucI3f" name="summer.jpg" compile="0" resource="1" file="Resources/summer.jpg"/>
+      <FILE id="QOhnK3" name="winter.jpg" compile="0" resource="1" file="Resources/winter.jpg"/>
     </GROUP>
     <GROUP id="{C3441981-4493-74BD-FEBD-01642577C70C}" name="Source">
       <FILE id="FnoVQY" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
