@@ -65,6 +65,8 @@ public:
                               DocumentWindow::allButtons)
         {
             setUsingNativeTitleBar (true);
+            setTitleBarButtonsRequired(DocumentWindow::TitleBarButtons::closeButton +
+                DocumentWindow::TitleBarButtons::minimiseButton, false);
             setContentOwned (new MainComponent(), true);
 
            #if JUCE_IOS || JUCE_ANDROID
@@ -73,8 +75,14 @@ public:
             setResizable (true, true);
             centreWithSize (getWidth(), getHeight());
            #endif
-
+            setSize(width, height);
+            if (auto* constrainer = getConstrainer())
+            {
+                constrainer->setFixedAspectRatio(static_cast<double>(width) / static_cast<double>(height));
+                constrainer->setSizeLimits(width / 4, height / 4, width, height);
+            }
             setVisible (true);
+            setBounds(0, 0, width, height);
         }
 
         void closeButtonPressed() override
@@ -98,6 +106,9 @@ public:
 
 private:
     std::unique_ptr<MainWindow> mainWindow;
+    static constexpr int width{ 1280 };
+    static constexpr int height{ 800 };
+
 };
 
 //==============================================================================
