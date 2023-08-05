@@ -19,7 +19,7 @@ public:
     void resized() override;
 private:
     juce::Toolbar m_toolbar;
-    class DemoToolbarItemFactory : public juce::ToolbarItemFactory
+    /*class DemoToolbarItemFactory : public juce::ToolbarItemFactory
     {
     public:
         DemoToolbarItemFactory() {}
@@ -142,5 +142,5 @@ private:
         
     };
 
-    DemoToolbarItemFactory factory;
+    DemoToolbarItemFactory factory;*/
 };

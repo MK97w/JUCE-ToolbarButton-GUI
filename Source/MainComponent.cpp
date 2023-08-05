@@ -22,7 +22,7 @@ void MainComponent::paint (juce::Graphics& g)
     g.setFont (juce::Font (16.0f));
     g.setColour (juce::Colours::white);
     g.drawText ("Hello World!", getLocalBounds(), juce::Justification::centred, true);
-    g.drawImage(juce::ImageCache::getFromMemory(BinaryData::summer_jpg, BinaryData::summer_jpgSize),getLocalBounds().toFloat());
+    g.drawImage(juce::ImageCache::getFromMemory(BinaryData::winter_jpg, BinaryData::winter_jpgSize),getLocalBounds().toFloat());
 }
 
 void MainComponent::resized()
