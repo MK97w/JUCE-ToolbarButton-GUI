@@ -9,3 +9,7 @@
 */
 
 #include "ToolbarHandler.h"
+ToolbarHandler::ToolbarHandler()
+{
+    addAndMakeVisible(m_toolbar);
+}
