@@ -12,4 +12,15 @@
 ToolbarHandler::ToolbarHandler()
 {
     addAndMakeVisible(m_toolbar);
+    m_toolbar.addDefaultItems(factory);
+}
+
+void ToolbarHandler::resized()
+{
+    auto toolbarThickness = 50;
+
+    if (m_toolbar.isVertical())
+        m_toolbar.setBounds(getLocalBounds().removeFromLeft(toolbarThickness));
+    else
+        m_toolbar.setBounds(getLocalBounds().removeFromTop(toolbarThickness));
 }

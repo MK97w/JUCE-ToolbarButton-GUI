@@ -5,8 +5,8 @@ using namespace juce;
 //==============================================================================
 MainComponent::MainComponent()
 {
-
-    ToolbarHandler toolBarHandler;
+    ToolbarHandler myToolbar;
+  
     
 }
 

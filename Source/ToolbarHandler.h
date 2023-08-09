@@ -17,7 +17,7 @@ class ToolbarHandler : public Component
 {
 public:
     ToolbarHandler();
-    //void resized() override;
+    void resized() override;
 private:
     juce::Toolbar m_toolbar;
 
