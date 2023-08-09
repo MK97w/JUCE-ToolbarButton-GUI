@@ -10,6 +10,7 @@
       <FILE id="QOhnK3" name="winter.jpg" compile="0" resource="1" file="Resources/winter.jpg"/>
     </GROUP>
     <GROUP id="{C3441981-4493-74BD-FEBD-01642577C70C}" name="Source">
+      <FILE id="VlkF4t" name="DemoUtilities.h" compile="0" resource="0" file="Source/DemoUtilities.h"/>
       <FILE id="Twtj01" name="ToolbarHandler.cpp" compile="1" resource="0"
             file="Source/ToolbarHandler.cpp"/>
       <FILE id="RXCC2y" name="ToolbarHandler.h" compile="0" resource="0"

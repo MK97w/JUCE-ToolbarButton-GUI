@@ -10,9 +10,10 @@
 
 #pragma once
 #include <JuceHeader.h>
+#include "DemoUtilities.h"
 using namespace juce;
 
-class ToolbarHandler : public juce::Component
+class ToolbarHandler : public Component
 {
 public:
     ToolbarHandler();
@@ -57,46 +58,14 @@ private:
             {
                 switch (itemId)
                 {
-                    //case doc_new:           return new ToolbarButton(itemId, text, image->createCopy(), {}); -> ADD BUTTON WITH IMAGES HERE
-
-                    default:                break;
+                    auto drawable = std::make_unique<DrawableImage>();
+                    drawable->setImage(getImageFromAssets("juce_icon.png"));
+                    return new ToolbarButton(itemId, "juce!", std::move(drawable), {});
                 }
-
                 return nullptr;
             }
 
-        private:
-            StringArray iconNames;
-            OwnedArray<Drawable> iconsFromZipFile;
-
-            // This is a little utility to create a button with one of the SVG images in
-            // our embedded ZIP file "icons.zip"
-            /*ToolbarButton* createButtonFromZipFileSVG(const int itemId, const String& text, const String& filename)
-            {
-                if (iconsFromZipFile.size() == 0)
-                {
-                    // If we've not already done so, load all the images from the zip file..
-                    ZipFile icons(createAssetInputStream("icons.zip").release(), true);
-
-                    for (int i = 0; i < icons.getNumEntries(); ++i)
-                    {
-                        std::unique_ptr<InputStream> svgFileStream(icons.createStreamForEntry(i));
-
-                        if (svgFileStream.get() != nullptr)
-                        {
-                            iconNames.add(icons.getEntry(i)->filename);
-                            iconsFromZipFile.add(Drawable::createFromImageDataStream(*svgFileStream));
-                        }
-                    }
-                }
-
-                auto* image = iconsFromZipFile[iconNames.indexOf(filename)];
-                return new ToolbarButton(itemId, text, image->createCopy(), {});
-            }*/
-
-            // Demonstrates how to put a custom component into a toolbar - this one contains
-            // a ComboBox.
-            
+        private:           
         };
 
         DemoToolbarItemFactory factory;
