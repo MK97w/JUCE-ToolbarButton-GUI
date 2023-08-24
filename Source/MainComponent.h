@@ -1,7 +1,8 @@
 #pragma once
 
 #include <JuceHeader.h>
-
+#include "DemoUtilities.h"
+using namespace juce;
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
@@ -24,6 +25,7 @@ private:
     static constexpr int originalWidth{ 1200 };
     static constexpr int originalHeight{ 800 };
     juce::ComponentBoundsConstrainer constrainer;
+ 
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainComponent)
 };
