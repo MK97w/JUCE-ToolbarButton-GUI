@@ -11,62 +11,69 @@
 #pragma once
 #include <JuceHeader.h>
 #include "DemoUtilities.h"
-using namespace juce;
 
-class ToolbarHandler : public Component
+namespace juce
 {
-public:
-    ToolbarHandler();
-    void resized() override;
-private:
-    juce::Toolbar m_toolbar;
-
-    class DemoToolbarItemFactory : public ToolbarItemFactory
+    class ToolbarHandler : public Component
     {
     public:
-        DemoToolbarItemFactory() {}
+        ToolbarHandler();
+        void resized() override;
+    private:
+        Toolbar m_toolbar;
 
-        enum DemoToolbarItemIds
+        class ItemFactory : public ToolbarItemFactory
         {
-            doc_new = 1,
-        };
+        public:
+            ItemFactory() {}
 
-        void getAllToolbarItemIds(Array<int>& ids) override
-        {
-            // This returns the complete list of all item IDs that are allowed to
-            // go in our toolbar. Any items you might want to add must be listed here. The
-            // order in which they are listed will be used by the toolbar customisation panel.
+            enum ToolbarItemIds
+            {
+                sun = 1,
+            };
 
-            ids.add(doc_new);
+            void getAllToolbarItemIds(Array<int>& ids) override
+            {
+                // This returns the complete list of all item IDs that are allowed to
+                // go in our toolbar. Any items you might want to add must be listed here. The
+                // order in which they are listed will be used by the toolbar customisation panel.
+
+                ids.add(sun);
 
 
-            // If you're going to use separators, then they must also be added explicitly
-            // to the list.
-            ids.add(separatorBarId);
-            ids.add(spacerId);
-            ids.add(flexibleSpacerId);
-        }
+                // If you're going to use separators, then they must also be added explicitly
+                // to the list.
+                //ids.add(separatorBarId);
+                //ids.add(spacerId);
+                //ids.add(flexibleSpacerId);
+            }
 
-        void getDefaultItemSet(Array<int>& ids) override
-        {
-            // This returns an ordered list of the set of items that make up a
-            // toolbar's default set. Not all items need to be on this list, and
-            // items can appear multiple times (e.g. the separators used here).
-            ids.add(doc_new);
-        }
+            void getDefaultItemSet(Array<int>& ids) override
+            {
+                // This returns an ordered list of the set of items that make up a
+                // toolbar's default set. Not all items need to be on this list, and
+                // items can appear multiple times (e.g. the separators used here).
+                ids.add(sun);
+            }
             ToolbarItemComponent* createItem(int itemId) override
             {
                 switch (itemId)
                 {
-                    auto drawable = std::make_unique<DrawableImage>();
-                    drawable->setImage(getImageFromAssets("juce_icon.png"));
-                    return new ToolbarButton(itemId, "juce!", std::move(drawable), {});
+                    case sun:
+                    {
+                        auto drawable = std::make_unique<DrawableImage>();
+                        //drawable->setImage(getImageFromAssets("sun.png"));
+                        drawable->setImage(ImageCache::getFromMemory(BinaryData::sun_png, BinaryData::sun_pngSize));
+                        return new ToolbarButton(itemId, "sun", std::move(drawable), {});
+                    }
+                    default: break;
                 }
                 return nullptr;
             }
 
-        private:           
+        private:
         };
 
-        DemoToolbarItemFactory factory;
-};
+        ItemFactory factory;
+    };
+}

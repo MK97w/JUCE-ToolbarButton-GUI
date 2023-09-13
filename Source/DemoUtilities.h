@@ -111,7 +111,7 @@ inline std::unique_ptr<InputStream> createAssetInputStream(const char* resourceP
 
 inline Image getImageFromAssets(const char* assetName)
 {
-    auto hashCode = (String(assetName) + "@juce_demo_assets").hashCode64();
+    auto hashCode = (String(assetName) + "@Resources").hashCode64();
     auto img = ImageCache::getFromHashCode(hashCode);
 
     if (img.isNull())
